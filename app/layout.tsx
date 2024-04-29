@@ -1,3 +1,4 @@
+"use client"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -5,13 +6,12 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ModalProvider from "@/components/modal-provider";
 import { ToasterProvider } from "@/components/toaster-provider";
 import { CrispProvider } from "@/components/crisp-provider";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "HelpMateAI",
-  description: "Developed By Emran",
-};
+
 
 export default function RootLayout({
   children,
@@ -25,7 +25,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <ModalProvider />
           <ToasterProvider />
-          {children}
+          <Provider store={store}>{children}</Provider>
         </body>
       </html>
     </ClerkProvider>

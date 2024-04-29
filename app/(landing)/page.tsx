@@ -7,7 +7,7 @@ import { LandingNavbar } from "@/components/landing/landing-navbar";
 const LandingPage = () => {
   return (
     <main className="mx-auto max-w-screen-xl h-full">
-      <div className="h-full bg-[#0d0e11]">
+      <div className="h-full ">
         <LandingNavbar />
         <LandingHero />
         <BrandingComponent />

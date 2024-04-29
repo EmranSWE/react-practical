@@ -3,7 +3,7 @@ import { Asar } from "next/font/google";
 const font = Asar({ weight: "400", subsets: ["devanagari"] });
 const BrandingComponent = () => {
   return (
-    <div className="text-center py-8 text-white">
+    <div className="text-center py-8 text-black">
       <h2 className={cn("text-5xl font-bold mb-4  ", font.className)}>
         Embrace seamless shopping with <br />
         <span className="text-gradient">E-shop BD</span>
