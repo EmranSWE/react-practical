@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.text_primary {
+  color: #B968C5;
+}
+.background_primary {
+  background-color: #B968C5;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,18 +81,8 @@
 
 
   
-.text_primary {
-  color: #B968C5;
-}
-.background_primary {
-  background-color: #B968C5;
-}
-.text_premium {
-  /* background-image: linear-gradient(to right, #6366f1, #7c3aed, #ec4899);
-  color: white;
-  border: none; */
-  background-color: "red";
-}
+
+
 
   -webkit-background-clip: text; /* For Safari */
   color: transparent;

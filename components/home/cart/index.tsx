@@ -3,7 +3,6 @@ import React from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -24,7 +23,7 @@ const CartPage = () => {
     <div>
       <Sheet>
         <SheetTrigger>
-          <Button variant="destructive">
+          <Button className="text-black font-extrabold">
             <HiOutlineShoppingCart size="25" />
           </Button>
         </SheetTrigger>

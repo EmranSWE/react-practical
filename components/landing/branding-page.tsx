@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
-import { Asar } from "next/font/google";
-const font = Asar({ weight: "400", subsets: ["devanagari"] });
+import {  Montserrat } from "next/font/google";
+const font = Montserrat({ weight: "600", subsets: ["latin"] });
 const BrandingComponent = () => {
   return (
     <div className="text-center py-8 text-black">
-      <h2 className={cn("text-5xl font-bold mb-4  ", font.className)}>
+      <h2 className={cn("text-4xl font-extrabold text-black ", font.className)}>
         Embrace seamless shopping with <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r  from-purple-400 to-pink-600">E-shop BD</span>
-        <br /> – where innovation meets convenience in every click!
+        <span className="font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r text-5xl from-purple-400 to-pink-600">E-Shop BD</span>
+        <br /> – where innovation meets in every click!
         <br />
       </h2>
       <div className="flex flex-col items-center lg:flex-row lg:justify-center my-2">

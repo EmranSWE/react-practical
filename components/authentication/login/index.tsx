@@ -6,13 +6,44 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import login from "../../../assets/Catalogue-amico.png"
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { storeUserInfo } from "@/lib/auth-service";
 const RegisterPage = () => {
+  const { toast } = useToast();
+  const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading,setLoading]=useState(false)
   const methods = useForm();
 
-  const onSubmit = (data:any) => {
-    // Process the submitted form data here
-    console.log(data);
+
+  // Handle Register submit
+  const onSubmit = async (data: any) => {
+    setLoading(true)
+    try {
+      const response = await axios.post("/api/login", data);
+      if (response.status === 200) {
+        toast({
+          description: response.data.message,
+        });
+        document.cookie = `refreshToken=${response.data.refreshToken}; HttpOnly`;
+        setLoading(false)
+        storeUserInfo({ accessToken: response.data.accessToken });
+        router.push("/products");
+      } else {
+        console.error("Error:", response.data.message);
+        toast({
+          description: response.data.message,
+        });
+        setLoading(false)
+      }
+    } catch (error) {
+      toast({
+        description: "Invalid phone or password!",
+      });
+      setLoading(false)
+    }
   };
 
   return (
@@ -62,8 +93,10 @@ const RegisterPage = () => {
               <Button
                 className="mt-4 w-full flex justify-center items-center background_primary"
                 type="submit"
+                disabled={loading}
+                variant={"premium"}
               >
-                Submit
+                { loading ? "Loading":"Login"}
               </Button>
             </form>
           </FormProvider>
