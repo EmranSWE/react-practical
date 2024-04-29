@@ -6,7 +6,7 @@ const FooterPage = () => {
   const currentYear = new Date().getFullYear();
   return (
     <div>
-      <div className="bg-[#192339] border-none text-white py-6">
+      <div className="bg-[#192339] border-none text-white py-6 w-full">
         <div className="container mx-auto flex flex-wrap">
           <div className="w-full md:w-1/5 mb-4 md:mb-0">
             {/* <img src="your-logo.png" alt="Logo" className="mb-2 w-16 h-16 mx-auto"> */}

@@ -10,7 +10,7 @@ const FAQ = () => {
   return (
     <div className="text-black px-10 pb-20">
       <div className="text-center">
-        <h1 className="text-4xl font-extrabold mb-10  text-gradient">
+        <h1 className="text-4xl font-extrabold mb-10  ">
           Frequently Asked Questions
         </h1>
       </div>
