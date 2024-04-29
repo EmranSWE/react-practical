@@ -72,6 +72,11 @@ export const LandingNavbar = () => {
               <li>
                 <Cart />
               </li>
+             {loginUser && <li>
+                <Button className="text-black font-extrabold" asChild>
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+              </li>}
               <li className="ml-5">
               <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">

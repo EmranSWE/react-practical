@@ -12,7 +12,7 @@ interface InputProps {
   textArea?: boolean;
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  defaultValue?: string;
+  defaultValue?: any;
   value?: string;
   required?: boolean;
   disabled?: boolean;

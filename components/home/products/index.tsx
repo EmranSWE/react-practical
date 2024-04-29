@@ -6,10 +6,25 @@ import CustomCard from "@/components/common/custom-card";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function ProductPage() {
-  const { data, isLoading } = useGetProductsQuery(undefined);
-  // const { toast } = useToast();
+  const [productData, setProductData] = useState([]);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await axios.get("/api/product");
+        setProductData(response.data.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchProductData();
+  }, []);
+
 
   const { priceRange, status } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
@@ -17,20 +32,21 @@ export default function ProductPage() {
     dispatch(setPriceRange(value[0]));
   };
 
-  let productsData;
+//   let productsData;
 
-  if (status) {
-    productsData = data?.data?.filter(
-      (item: { status: boolean; price: number }) =>
-        item.status === true && item.price < priceRange
-    );
-  } else if (priceRange > 0) {
-    productsData = data?.data?.filter(
-      (item: { price: number }) => item.price < priceRange
-    );
-  } else {
-    productsData = data;
-  }
+// if (status && priceRange > 0) {
+//   // Filter products based on both status and priceRange
+//   productsData = productData.filter(
+//     (item) => item.status === true && item.price < priceRange
+//   );
+// } else if (priceRange > 0) {
+//   // Filter products based only on priceRange
+//   productsData = productData.filter((item) => item.price < priceRange);
+// } else {
+//   // Return all products if no filtering criteria are provided
+//   productsData = productData;
+// }
+ 
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 max-w-7xl mx-auto relative">
@@ -63,7 +79,7 @@ export default function ProductPage() {
 
       {/* Product Section */}
       <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-20">
-        {productsData?.map((product: { id: any; }) => (
+        {productData?.map((product: { id: any; }) => (
           <CustomCard key={product.id} product={product} />
         ))}
       </div>
