@@ -127,7 +127,8 @@ export default function CheckoutPage() {
               <p>Total</p>
               <p>81.95$</p>
             </div>
-            <Button variant={"premium"} className='w-full'  onClick={() => handleAddProduct(product)}>
+            {/* <Button variant={"premium"} className='w-full'  onClick={() => handleAddProduct(product)}> */}
+            <Button variant={"premium"} className='w-full'  >
           Add to Checkout
         </Button>
           </div>

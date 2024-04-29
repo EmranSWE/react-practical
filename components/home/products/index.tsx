@@ -63,7 +63,7 @@ export default function ProductPage() {
 
       {/* Product Section */}
       <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-20">
-        {productsData?.map((product) => (
+        {productsData?.map((product: { id: any; }) => (
           <CustomCard key={product.id} product={product} />
         ))}
       </div>
