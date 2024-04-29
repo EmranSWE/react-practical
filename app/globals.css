@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.text_primary {
-  color: #B968C5;
-}
-.background_primary {
-  background-color: #B968C5;
-}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -79,7 +74,12 @@
     hsl(var(--destructive-foreground))
   );
 
-
+  .text_primary {
+    color: #B968C5;
+  }
+  .background_primary {
+    background-color: #B968C5;
+  }
   
 
 

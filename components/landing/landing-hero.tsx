@@ -2,12 +2,12 @@
 
 import TypewriterComponent from "typewriter-effect";
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
+import { isLoggedIn } from "@/lib/auth-service";
 
 export const LandingHero = () => {
-  const { isSignedIn } = useAuth();
+  const loginUser = isLoggedIn();
 
   return (
     <div className="text-black font-bold py-10 text-center space-y-5">
@@ -38,13 +38,12 @@ export const LandingHero = () => {
         Enjoy Exclusive Deals and Discount
       </div>
       <div>
-        {/* <Link href={isSignedIn ? "/dashboard" : "/sign-up"}> */}
-        <Link href={"/login"}>
+        <Link href={loginUser ? "/products" : "/login"}>
           <Button
             variant="premium"
             className="md:text-lg p-4 md:p-6 rounded-full font-semibold"
           >
-            Login Now
+            {loginUser ? "Buy Now" : "Login Now"}
           </Button>
         </Link>
       </div>

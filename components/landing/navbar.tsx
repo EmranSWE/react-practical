@@ -1,22 +1,30 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@clerk/nextjs";
-import { useState } from "react"; // Import useState hook
-import { HiOutlineMenu, HiOutlineSearch } from "react-icons/hi"; // Import hamburger menu icon
+import { useState } from "react"; 
+import { HiOutlineMenu, HiOutlineSearch } from "react-icons/hi"; 
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import Cart from "@/app/(landing)/(home)/cart/page";
 import { Montserrat } from "next/font/google";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { isLoggedIn, removeUserInfo } from "@/lib/auth-service";
+import { setToLoginInfo } from "@/lib/local-storage";
+import { useRouter } from "next/navigation";
 const font = Montserrat({ weight: "600", subsets: ["latin"] });
 export const LandingNavbar = () => {
-  const { isSignedIn } = useAuth();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
-
+  const router =useRouter()
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
   // Function to toggle mobile menu visibility
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
+  };
+  const loginUser = isLoggedIn();
+
+  const logOut = () => {
+    removeUserInfo("accessToken");
+    setToLoginInfo("login", false);
+    router.push("/login");
   };
 
   return (
@@ -81,32 +89,32 @@ export const LandingNavbar = () => {
                     <DropdownMenuItem className="cursor-pointer">
                       Billing
                     </DropdownMenuItem>
-                     {/* {!user.email && (
-//                       <>
-//                         <Link to="login">
-//                           <DropdownMenuItem className="cursor-pointer">
-//                             Login
-//                           </DropdownMenuItem>
-//                         </Link>
-//                         <Link to="Sign up">
-//                           <DropdownMenuItem className="cursor-pointer">
-//                             Sign Up
-//                           </DropdownMenuItem>
-//                         </Link>
-//                       </>
-//                     )}
-//                     {user.email && (
-//                       <>
-//                         <Link to="logout">
-//                           <DropdownMenuItem
-//                             onClick={handleLogOut}
-//                             className="cursor-pointer"
-//                           >
-//                             Log Out
-//                           </DropdownMenuItem>
-//                         </Link>
-//                       </>
-//                     )} */}
+                    {!loginUser && (
+                      <>
+                        <Link href={"/login"}>
+                          <DropdownMenuItem className="cursor-pointer">
+                             Login
+                          </DropdownMenuItem>
+                         </Link>
+                       <Link href={"/register"}>
+                           <DropdownMenuItem className="cursor-pointer">
+                            Register
+                          </DropdownMenuItem>
+                        </Link>
+                      </>
+                     )}
+                   {loginUser && (
+                      <>
+                        <Link href="/login">
+                          <DropdownMenuItem
+                            onClick={logOut}
+                             className="cursor-pointer"
+                           >
+                            Log Out
+                         </DropdownMenuItem>
+                       </Link>
+                      </>
+                  )} 
                  </DropdownMenuContent>
             </DropdownMenu>
               </li>
