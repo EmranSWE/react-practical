@@ -16,7 +16,6 @@ import {
   VideoIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { FreeCounter } from "./free-counter";
 const routes = [
   {
     label: "Dashboard",
@@ -115,7 +114,6 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
           ))}
         </div>
       </div>
-      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );
 };
