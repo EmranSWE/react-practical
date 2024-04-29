@@ -74,16 +74,6 @@
     hsl(var(--destructive-foreground))
   );
 
-  .text_primary {
-    color: #B968C5;
-  }
-  .background_primary {
-    background-color: #B968C5;
-  }
-  
-
-
-
   -webkit-background-clip: text; /* For Safari */
   color: transparent;
   display: inline-block; /* Needed for Safari */

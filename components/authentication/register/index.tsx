@@ -106,7 +106,7 @@ const RegisterPage = () => {
                 <div>
                   <Link href={`/login`}>
                     Already register to E-Shop BD?{" "}
-                    <span className="text_primary">Login Now</span>
+                    <span  className="text-[#B968C5] font-bold">Login Now</span>
                   </Link>
                 </div>
               </div>
