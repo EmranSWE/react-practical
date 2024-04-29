@@ -50,7 +50,7 @@ export default function CustomCard({ product }:any) {
   };
   return (
     <div>
-      <div className="rounded-2xl h-[480px] flex flex-col items-start justify-between p-5 overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all gap-2">
+      <div className="rounded-2xl p-5 lg:m-0 md:m-6 sm:m-5 min-h-[480px] flex flex-col items-start justify-between overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all gap-2">
         <Link href={`/products/${product._id}`} className="w-full">
           <img src={product?.image} alt="product" />
           <h1 className="text-xl font-semibold">{product?.name}</h1>
@@ -60,7 +60,7 @@ export default function CustomCard({ product }:any) {
           Availability: {product?.status ? 'In stock' : 'Out of stock'}
         </p>
         <p className="text-sm">Price: {product?.price}</p>
-        <Button variant="default" onClick={() => handleAddProduct(product)}>
+        <Button variant={"premium"}  onClick={() => handleAddProduct(product)}>
           Add to cart
         </Button>
       </div>

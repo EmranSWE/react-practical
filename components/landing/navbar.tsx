@@ -129,8 +129,8 @@ export const LandingNavbar = () => {
       <div className="h-full w-full bg-white/60">
         <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
           {/* Logo */}
-          <div className="flex items-center">
-            <h1 className={cn("text-2xl font-bold text-black", font.className)}>
+          <div className="flex items-center lg:ml-0 md:ml-5  sm:ml-5">
+            <h1 className={cn("text-4xl font-extrabold text-black ", font.className)}>
               E-Shop BD
             </h1>
           </div>
@@ -144,7 +144,7 @@ export const LandingNavbar = () => {
             </button>
           </div>
           {/* Desktop menu */}
-          <div className="hidden md:block">
+          <div className="hidden md:block ">
             <ul className="flex items-center">
               <li>
                 <Button variant="link" asChild>

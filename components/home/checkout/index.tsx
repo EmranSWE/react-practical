@@ -12,7 +12,8 @@ export default function CheckoutPage() {
   const { products } = useAppSelector((state) => state.cart);
   console.log('I am inside the checkout page', products);
   return (
-    <div className="flex justify-center items-center h-[calc(100vh-80px)] gap-10 text-primary">
+    <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-10 text-primary">
+      {/* Delivery Information */}
       <div className="max-w-3xl w-full">
         <h1 className="mb-2">Delivery Information</h1>
         <div className="h-[60vh] border border-gray-300 rounded-md p-10 overflow-auto">
@@ -88,6 +89,8 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      {/* Oder Summery */}
       <div className="max-w-lg w-full">
         <h1 className="mb-2">Order Summery</h1>
         <div className="border border-gray-300 rounded-md h-[60vh] p-10 flex flex-col">
@@ -124,7 +127,9 @@ export default function CheckoutPage() {
               <p>Total</p>
               <p>81.95$</p>
             </div>
-            <Button className="w-full">Checkout</Button>
+            <Button variant={"premium"} className='w-full'  onClick={() => handleAddProduct(product)}>
+          Add to Checkout
+        </Button>
           </div>
         </div>
       </div>

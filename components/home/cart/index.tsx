@@ -102,7 +102,7 @@ const CartPage = () => {
             <HiOutlineShoppingCart size="25" />
           </Button>
         </SheetTrigger>
-        <SheetContent >
+        <SheetContent className="overflow-auto ">
           <SheetHeader>
             <SheetTitle>Cart</SheetTitle>
             <h1>Total: {total.toFixed(2)}</h1>
@@ -113,23 +113,23 @@ const CartPage = () => {
                 className="border h-44 p-5 flex justify-between rounded-md"
                 key={product.name}
               >
-                <div className="border-r pr-5 shrink-0">
+                <div className="border-r  ">
                   <img src={product?.image} alt="" className="h-full" />
                 </div>
                 <div className="px-2 w-full flex flex-col gap-3">
-                  <h1 className="text-2xl self-center">{product?.name}</h1>
+                  <h1 className=" text-md">{product?.name}</h1>
                   <p>Quantity: {product.quantity}</p>
-                  <p className="text-xl">
-                    Total Price:{" "}
-                    {(product.price * product.quantity!).toFixed(2)} $
+                  <p className="text-sm">
+                    Total Price:
+                    {(product.price * product.quantity!).toFixed(2)}$
                   </p>
                 </div>
                 <div className="border-l pl-5 flex flex-col justify-between">
                   <Button onClick={() => dispatch(addToCart(product))}>
-                    <HiOutlinePlus size="20" />
+                    <HiOutlinePlus className="text-green-600"  size="20" />
                   </Button>
                   <Button onClick={() => dispatch(removeOne(product))}>
-                    <HiMinus size="20" />
+                    <HiMinus className="text-red-500" size="20" />
                   </Button>
                   <Button
                     variant="destructive"
@@ -143,15 +143,6 @@ const CartPage = () => {
             ))}
           </div>
         </SheetContent>
-        {/* <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </SheetDescription>
-          </SheetHeader>
-        </SheetContent> */}
       </Sheet>
     </div>
   );
